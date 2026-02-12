@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<link rel="stylesheet" href="./style.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+			rel="stylesheet"
+		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>package</title>
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<h1>Регистрация</h1>
+
+			<form class="form" name="signUp">
+				<input type="email" placeholder="Почта" name="email"/>
+				<input type="text" placeholder="Имя" name="firstName"/>
+				<input type="text" placeholder="Фамилия" name="lastName"/>
+				<input type="password" placeholder="Пароль" name="password"/>
+
+				<button class="btn-primary">Продолжить</button>
+			</form>
+
+			<a href="/src/pages/signin/index.html" class="login-link">Войти в аккаунт</a>
+		</div>
+		<script type="module" src="./script.js"></script>
+	</body>
+</html>
