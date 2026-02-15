@@ -16,7 +16,7 @@ form.onsubmit = async (e) => {
         
         if (users.length > 0 && users[0].password == password) {
             const currentUser = {
-                fullname: `${users[0].name.firstName} ${users[0].name.lastName}`,
+                fullname: `${users[0].name.firstname} ${users[0].name.lastname}`,  // ← ИЗМЕНЕНО
                 email: users[0].email
             }
 

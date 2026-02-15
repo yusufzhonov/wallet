@@ -1,7 +1,6 @@
 let form = document.forms.signUp
 let API_URL = "https://698c5d9121a248a273614fa0.mockapi.io/api/v1/users"
 
-
 form.onsubmit = async (e) => {
     e.preventDefault();
 
@@ -10,7 +9,7 @@ form.onsubmit = async (e) => {
     const existingUser = await checkUserByEmail(fn.get("email"))
     
     if (existingUser) {
-        console.log("Пользователь с таким email уже существует", existingUser);
+        alert("Пользователь с таким email уже существует");
         return
     }
     
@@ -18,8 +17,8 @@ form.onsubmit = async (e) => {
         method: "POST",
         body: JSON.stringify({
             name: {
-                firstName: fn.get("firstName"),
-                lastName: fn.get("lastName")
+                firstname: fn.get("firstName"),
+                lastname: fn.get("lastName")
             },
             email: fn.get("email"),
             password: fn.get("password"),
@@ -33,7 +32,7 @@ form.onsubmit = async (e) => {
     const newUser = await res.json()
 
     const currentUser = {
-        fullname: `${newUser.name.firstName} ${newUser.name.lastName}`,
+        fullname: `${newUser.name.firstname} ${newUser.name.lastname}`,  // ← ИЗМЕНЕНО
         email: newUser.email
     }
 
