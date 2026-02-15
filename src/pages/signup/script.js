@@ -18,8 +18,8 @@ form.onsubmit = async (e) => {
         method: "POST",
         body: JSON.stringify({
             name: {
-                firstname: fn.get("firstName"),
-                lastname: fn.get("lastName")
+                firstName: fn.get("firstName"),
+                lastName: fn.get("lastName")
             },
             email: fn.get("email"),
             password: fn.get("password"),
