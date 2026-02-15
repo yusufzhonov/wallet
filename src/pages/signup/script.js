@@ -18,8 +18,8 @@ form.onsubmit = async (e) => {
         method: "POST",
         body: JSON.stringify({
             name: {
-                firstName: fn.get("firstName"),
-                lastName: fn.get("lastName")
+                firstname: fn.get("firstName"),
+                lastname: fn.get("lastName")
             },
             email: fn.get("email"),
             password: fn.get("password"),
@@ -32,7 +32,15 @@ form.onsubmit = async (e) => {
 
     const newUser = await res.json()
 
-    console.log("Пользователь уже создан", newUser);
+    const currentUser = {
+        fullname: `${newUser.name.firstName} ${newUser.name.lastName}`,
+        email: newUser.email
+    }
+
+    localStorage.setItem("current", JSON.stringify(currentUser))
+    window.location.href = '/'
+
+    console.log("Пользователь создан", newUser);
 }
 
 async function checkUserByEmail(email) {

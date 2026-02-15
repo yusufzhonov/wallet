@@ -1,5 +1,23 @@
-let baseUrl = "https://698c5d9121a248a273614fa0.mockapi.io/api/v1/"
+import { checkAuth, logOut } from './libs/auth.js'
 
-fetch(baseUrl + 'users')
-.then(res => res.json())
-.then(data => console.log(data))
+let exit = document.querySelector(".header_img")
+let emails = document.querySelectorAll(".emaili")
+let titleElement = document.querySelector(".title")
+
+checkAuth()
+
+let currentUser = JSON.parse(localStorage.getItem("current"))
+
+exit.onclick = () => {
+    logOut()
+}
+
+if (currentUser) {
+    emails.forEach(item => {
+        item.textContent = currentUser.email
+    })
+    
+    if (titleElement && currentUser.fullname) {
+        titleElement.textContent = `Добро пожаловать, ${currentUser.fullname}`
+    }
+}

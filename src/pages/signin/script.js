@@ -9,38 +9,23 @@ form.onsubmit = async (e) => {
     let email = fn.get("email")
     let password = fn.get("password")
 
-    if (!email || !password) {
-        console.log("Пожалуйста заполните поля");
-        return
-    }
+    let res = await fetch(`${API_URL}?email=${email}`)
 
-    try {
-        const user = await findUserByEmail(email)
+    if (res.status == 200) {
+        let users = await res.json()
+        
+        if (users.length > 0 && users[0].password == password) {
+            const currentUser = {
+                fullname: `${users[0].name.firstName} ${users[0].name.lastName}`,
+                email: users[0].email
+            }
 
-        if (!user) {
-            console.log("Пользователь с таким email не найден");
-            return
+            localStorage.setItem("current", JSON.stringify(currentUser))
+            window.location.href = '/'
+        } else {
+            alert("Неверный email или пароль")
         }
-
-        if (user.password !== password) {
-            console.log("Неверный пароль");
-            return
-        }
-
-        console.log("Вы успешно вошли", user);
-
-    } catch (error) {
-        console.error("Произошло ошибка при входе:", error);
+    } else {
+        alert("Пользователь не найден")
     }
-}
-
-async function findUserByEmail(email) {
-    const res = await fetch(`${API_URL}?email=${email}`)
-
-    if (res.status === 404) {
-        return null
-    }
-
-    const users = await res.json()
-    return users[0] || null
 }
