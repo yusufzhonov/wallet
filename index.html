@@ -1,75 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 
 <head>
 	<meta charset="UTF-8" />
 	<link rel="stylesheet" href="./src/style.css" />
 	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
 		rel="stylesheet" />
-	<title>package</title>
+	<title>Wallet</title>
 </head>
 
 <body>
-	<header class="header">
-		<div class="container header_container">
-			<div class="left">
-				<a href="/">Главная</a>
-				<a href="/src/pages/all-wallets/">Мои кошельки</a>
-				<a href="/src/pages/transacts/">Мои транзакции</a>
-			</div>
-			<div class="right">
-				<a href="#" class="emaili">alexadams@google.com</a>
-				<img src="log-out (1) 1.png" alt="" class="header_img" />
-			</div>
-		</div>
-	</header>
-	
+	<header class="header"></header>
+
 	<div class="container">
 		<main>
 			<div class="title-box">
-				<h1 class="title">Добро пожаловать, Alex Adams</h1>
-				<a href="#" class="email emaili">alexadams@google.com</a>
+				<h1 class="title">Добро пожаловать</h1>
+				<a href="#" class="email emaili"></a>
 			</div>
 
 			<div class="my-wallets">
 				<h3>Мои кошельки</h3>
-
-				<div class="card-box">
-					<div class="card">
-						<h3 class="type">Visa</h3>
-						<p class="value">₽15,000</p>
-					</div>
-					<div class="card">
-						<h3 class="type">MasterCard</h3>
-						<p class="value">₽8,200</p>
-					</div>
-					<div class="card">
-						<h3 class="type">PayPal</h3>
-						<p class="value">$1,200</p>
-					</div>
-					<div class="card">
-						<h3 class="type">Bitcoin</h3>
-						<p class="value">0.5 BTC</p>
-					</div>
-					<div class="card">
-						<h3 class="type">Master</h3>
-						<p class="value">₽1,200,500</p>
-					</div>
-					<div class="card">
-						<h3 class="type">PayPal</h3>
-						<p class="value">$2,500</p>
-					</div>
-					<div class="card">
-						<h3 class="type">Visa</h3>
-						<p class="value">₽20,000</p>
-					</div>
-				</div>
-
-				<a href="/src/pages/all-wallets/" class="all-wallets">смотреть все кошельки</a>
+				<!-- Карточки рендерятся через JS (Card.js) -->
+				<div class="card-box"></div>
+				<a href="/src/pages/all-walets/all_walets.html" class="all-wallets">смотреть все кошельки</a>
 			</div>
+
 			<p class="trabsect-text">Последние транзакции</p>
 
 			<table class="table">
@@ -82,69 +40,16 @@
 						<th>Когда</th>
 					</tr>
 				</thead>
-				<tbody class="tbody">
-					<tr>
-						<td>12334</td>
-						<td>VISA</td>
-						<td>Автомобиль</td>
-						<td>414,000,000</td>
-						<td>4 дня назад</td>
-					</tr>
-					<tr>
-						<td>12334</td>
-						<td>VISA</td>
-						<td>Автомобиль</td>
-						<td>414,000,000</td>
-						<td>4 дня назад</td>
-					</tr>
-					<tr>
-						<td>12334</td>
-						<td>VISA</td>
-						<td>Автомобиль</td>
-						<td>414,000,000</td>
-						<td>4 дня назад</td>
-					</tr>
-					<tr>
-						<td>12334</td>
-						<td>VISA</td>
-						<td>Автомобиль</td>
-						<td>414,000,000</td>
-						<td>4 дня назад</td>
-					</tr>
-					<tr>
-						<td>12334</td>
-						<td>VISA</td>
-						<td>Автомобиль</td>
-						<td>414,000,000</td>
-						<td>4 дня назад</td>
-					</tr>
-					<tr>
-						<td>12334</td>
-						<td>VISA</td>
-						<td>Автомобиль</td>
-						<td>414,000,000</td>
-						<td>4 дня назад</td>
-					</tr>
-					<tr>
-						<td>12334</td>
-						<td>VISA</td>
-						<td>Автомобиль</td>
-						<td>414,000,000</td>
-						<td>4 дня назад</td>
-					</tr>
-					<tr>
-						<td>12334</td>
-						<td>VISA</td>
-						<td>Автомобиль</td>
-						<td>414,000,000</td>
-						<td>4 дня назад</td>
-					</tr>
-				</tbody>
+				<!-- Строки рендерятся через JS (Transactions.js) -->
+				<tbody class="tbody"></tbody>
 			</table>
-			<p class="link"><a class="link all-wallets" href="/src/pages/transacts/">Смотреть все
-					оплаты</a></p>
+
+			<p class="link">
+				<a class="all-wallets" href="/src/pages/transacts/">Смотреть все транзакции</a>
+			</p>
 		</main>
 	</div>
+
 	<script type="module" src="/src/main.js"></script>
 </body>
 

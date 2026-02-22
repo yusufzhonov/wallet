@@ -1,5 +1,7 @@
+import axios from "axios"
+
 let form = document.forms.signIn
-let API_URL = "https://698c5d9121a248a273614fa0.mockapi.io/api/v1/users"
+let API_URL = import.meta.env.VITE_API_URL
 
 form.onsubmit = async (e) => {
     e.preventDefault()
@@ -9,15 +11,16 @@ form.onsubmit = async (e) => {
     let email = fn.get("email")
     let password = fn.get("password")
 
-    let res = await fetch(`${API_URL}?email=${email}`)
+    try {
+        let res = await axios.get(`${API_URL}?email=${email}`)
 
     if (res.status == 200) {
-        let users = await res.json()
+        let users = res.data[0]
         
-        if (users.length > 0 && users[0].password == password) {
+        if (users.password == password) {
             const currentUser = {
-                fullname: `${users[0].name.firstname} ${users[0].name.lastname}`,  // ← ИЗМЕНЕНО
-                email: users[0].email
+                fullname: `${users.name.firstname} ${users.name.lastname}`,
+                email: users.email
             }
 
             localStorage.setItem("current", JSON.stringify(currentUser))
@@ -27,5 +30,9 @@ form.onsubmit = async (e) => {
         }
     } else {
         alert("Пользователь не найден")
+    }
+    } catch (error) {
+        console.log(error);
+        throw error
     }
 }

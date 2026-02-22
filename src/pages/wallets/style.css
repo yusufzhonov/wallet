@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+#app {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.card-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 160px;
+    gap: 20px;
+    margin: 20px 0px;
+}
+
+.card {
+    background: linear-gradient(84.37deg, #380036 2.27%, #0CBABA 92.26%);
+    padding: 20px;
+    /* width: 282px;
+    height: 160px; */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h3 {
+        color: #f5fefd;
+    }
+
+    p {
+
+        color: #f5fefd;
+        
+    }
+}
+
+a{
+    text-decoration: none;
+}
+
+.card:nth-child(4n+1) {
+    background: linear-gradient(84.37deg, #D7816A 2.27%, #BD4F6C 92.26%);
+}
+
+.card:nth-child(4n+2) {
+    background: linear-gradient(84.37deg, #5F0A87 2.27%, #A4508B 92.26%);
+}
+
+.card:nth-child(4n+3) {
+    background: linear-gradient(84.37deg, #20BF55 2.27%, #01BAEF 92.26%);
+
+}
+
+.title-box {
+    margin: 40px 0;
+}
+
+.title {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.email {
+    font-size: 18px;
+    font-weight: 700;
+    color: #4f46e5;
+}
+
+.all-wallets {
+    font-size: 18px;
+    font-weight: 700;
+    color: #4f46e5;
+}
+
+.header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    background-color: #F0F0F0;
+}
+.head-cn{
+    display: flex;
+    justify-content: space-between;
+}
+.left {
+    display: flex;
+    gap: 21px;
+}
+
+.left a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.right {
+    display: flex;
+    gap: 21px;
+}
+
+.right a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+}

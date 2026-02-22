@@ -1,5 +1,7 @@
+import axios from "axios";
+
 let form = document.forms.signUp
-let API_URL = "https://698c5d9121a248a273614fa0.mockapi.io/api/v1/users"
+let API_URL = import.meta.env.VITE_API_URL
 
 form.onsubmit = async (e) => {
     e.preventDefault();
@@ -7,32 +9,26 @@ form.onsubmit = async (e) => {
     let fn = new FormData(form)
 
     const existingUser = await checkUserByEmail(fn.get("email"))
-    
+
     if (existingUser) {
         alert("Пользователь с таким email уже существует");
         return
     }
-    
-    const res = await fetch(API_URL, {
-        method: "POST",
-        body: JSON.stringify({
-            name: {
-                firstname: fn.get("firstName"),
-                lastname: fn.get("lastName")
-            },
-            email: fn.get("email"),
-            password: fn.get("password"),
-            createdAt: new Date(),
-        }),
-        headers: {
-            "Content-Type": "application/json",
+
+    const res = await axios.post(API_URL, {
+        name: {
+            firstname: fn.get("firstName"),
+            lastname: fn.get("lastName")
         },
+        email: fn.get("email"),
+        password: fn.get("password"),
+        createdAt: new Date(),
     })
 
-    const newUser = await res.json()
+    const newUser = res.data
 
     const currentUser = {
-        fullname: `${newUser.name.firstname} ${newUser.name.lastname}`,  // ← ИЗМЕНЕНО
+        fullname: `${newUser.name.firstname} ${newUser.name.lastname}`,
         email: newUser.email
     }
 
@@ -43,13 +39,12 @@ form.onsubmit = async (e) => {
 }
 
 async function checkUserByEmail(email) {
-    const res = await fetch(`${API_URL}?email=${email}`)
+    try {
+        const res = await axios.get(`${API_URL}?email=${email}`)
 
-    if (res.status === 404) {
-        return null
+        return res.data[0] || null;
+    } catch (err) {
+        console.error(err);
+        return null;
     }
-
-    const users = await res.json()
-
-    return users[0] || null
 }
