@@ -1,34 +1,36 @@
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
-
 <body>
-
     <div class="wrapper">
         <h1>Добавить транзакцию</h1>
-
         <form class="form">
-            <input type="text" placeholder="Из кошелька">
-            <input type="text" placeholder="Сумма">
-            <select>
-                <option value="" disabled selected>Выберите категорию</option>
-                <option value="auto">Автомобиль</option>
-                <option value="business">Бизнес идеи</option>
-                <option value="it">IT и технологии</option>
-                <option value="education">Образование</option>
+            <select class="wallet-select" name="from">
+                <option value="" disabled selected>Выберите кошелёк</option>
             </select>
-
+            <input type="number" name="amount" placeholder="Сумма">
+            <select class="type" name="type">
+                <option value="" disabled selected>Выберите категорию</option>
+                <option value="Коммунальные услуги">Коммунальные услуги</option>
+                <option value="Автомобиль">Автомобиль</option>
+                <option value="Интернет">Интернет</option>
+                <option value="Мобильная связь">Мобильная связь</option>
+                <option value="Покупка">Покупка</option>
+                <option value="Подписка">Подписка</option>
+                <option value="Такси">Такси</option>
+                <option value="Еда">Еда</option>
+                <option value="Бизнес">Бизнес</option>
+                <option value="IT и технологии">IT и технологии</option>
+                <option value="Образование">Образование</option>
+            </select>
             <button class="btn-primary">Продолжить</button>
         </form>
-
         <a href="#" class="login-link">Войти в аккаунт</a>
     </div>
-
+    <script type="module" src="./script.js"></script>
 </body>
-
 </html>

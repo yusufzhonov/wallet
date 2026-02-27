@@ -1,25 +1,22 @@
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
-
 <body>
-
     <div class="wrapper">
         <h1>Добавить кошелек</h1>
-
         <form class="form">
-            <input type="text" placeholder="Название кошелька">
-            <input type="text" id="amount" name="amount" placeholder="Баланс">
-
+            <input type="text" name="name" placeholder="Название кошелька">
+            <input type="text" name="amount" id="amount" placeholder="Баланс">
+            <select class="type" name="currency">
+                <option value="" disabled selected>Выберите валюту</option>
+            </select>
             <button class="btn-primary">Добавить</button>
         </form>
     </div>
-
+    <script type="module" src="./script.js"></script>
 </body>
-
 </html>

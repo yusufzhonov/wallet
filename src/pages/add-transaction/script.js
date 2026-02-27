@@ -1,45 +1,36 @@
-let transactions = JSON.parse(localStorage.getItem("transactions")) || []
+import axios from 'axios'
+import { render } from '../../libs/utils.js'
+import { WalletOption } from '../../components/WalletOption.js'
 
 let form = document.querySelector('.form')
-let select = document.querySelector('.type')
+let walletSelect = document.querySelector('.wallet-select')
+let typeSelect = document.querySelector('.type')
 let id = JSON.parse(localStorage.getItem('current'))
-let inps = document.querySelector('.inp')
+let API_wallets = import.meta.env.VITE_API_URL + "wallets"
 
-let regex = {
-    name: /^(VISA|MasterCard|Humo|AgroBank)$/,
-    amount: /^\d+$/
-}
+axios.get(API_wallets)
+    .then(res => {
+        render(res.data, walletSelect, WalletOption)
+    })
+    .catch(err => console.error(err))
 
 form.onsubmit = (e) => {
     e.preventDefault()
 
     let fn = new FormData(form)
-    let check = true
+    let transactions = JSON.parse(localStorage.getItem("transactions")) || []
 
-    inps.forEach(item => {
-        if(!regex[item.name].test(fn.get(item.name))) {
-            check = false
-            item.style.border = "2px solid red"
-        } else {
-            item.style.border = "1px solid #aaa"
-        }
-    })
-
-    if(!check) return
-
-    let newId = transactions.length + 1
-
-    let transact = {
-        id: newId,
+    let newTransaction = {
+        id: transactions.length + 1,
         name: fn.get('from'),
-        type: select.value,
-        sum: fn.get("amount"),
-        date: newDate().toISOString().slice(0, 10),
-        userId: id.id
+        type: typeSelect.value,
+        sum: Number(fn.get('amount')),
+        date: new Date().toISOString().slice(0, 10),
+        userId: id ? id.id : null
     }
 
-    transactions.push(transact)
-
+    transactions.push(newTransaction)
     localStorage.setItem("transactions", JSON.stringify(transactions))
+
     window.location.href = '/src/pages/transacts/'
 }
