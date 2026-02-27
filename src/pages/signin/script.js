@@ -1,7 +1,7 @@
 import axios from "axios"
 
 let form = document.forms.signIn
-let API_URL = import.meta.env.VITE_API_URL
+let API_URL = import.meta.env.VITE_API_URL + "users";
 
 form.onsubmit = async (e) => {
     e.preventDefault()
